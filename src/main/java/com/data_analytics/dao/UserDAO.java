@@ -1,7 +1,7 @@
-package dao;
+package com.data_analytics.dao;
 
-import models.User;
-import utils.SQLUtils;
+import com.data_analytics.models.User;
+import com.data_analytics.utils.SQLUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

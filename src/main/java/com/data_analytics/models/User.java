@@ -1,4 +1,4 @@
-package models;
+package com.data_analytics.models;
 
 public class User {
 

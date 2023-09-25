@@ -1,4 +1,4 @@
-package utils;
+package com.data_analytics.utils;
 
 import java.sql.*;
 import java.util.ArrayList;
