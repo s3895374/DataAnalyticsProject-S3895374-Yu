@@ -42,15 +42,20 @@ public class UserLoginController {
         // Authenticate against database
         User user = null;
         try {
+            // Find user by username
             user = userDAO.findByUsername(username);
+            // Check if user exists and password is correct
             if (user != null && user.getPassword().equals(password)) {
-               DashboardController controller =  FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
-               controller.setLogInUser(user);
-//                handleGoBackAction();
+                // Show dashboard view
+                DashboardController controller = FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
+                // Pass logged in user to dashboard controller
+                controller.setLogInUser(user);
             } else {
+                // Show alert for invalid username or password
                 FxUtils.alert("Invalid username or password");
             }
         } catch (SQLException e) {
+            // Show alert for invalid username or password
             FxUtils.alert("Invalid username or password");
         }
 
