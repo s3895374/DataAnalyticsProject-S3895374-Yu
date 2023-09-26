@@ -31,34 +31,45 @@ public class ProfileController {
 
     // Load user data
     public void loadUser(User user) {
+        // Set the text of the usernameTextField to the username of the user
         usernameTextField.setText(user.getUsername());
+
+        // Set the text of the passwordTextField to the password of the user
         passwordTextField.setText(user.getPassword());
+
+        // Set the text of the firstNameTextField to the first name of the user
         firstNameTextField.setText(user.getFirstName());
+
+        // Set the text of the lastNameTextField to the last name of the user
         lastNameTextField.setText(user.getLastName());
     }
 
     // Save user data
     public void handleSaveUserAction() {
+        // Create a new User object
         User user = new User();
+
+        // Set the username of the User object to the value entered in the usernameTextField
         user.setUsername(usernameTextField.getText());
         user.setUsername(passwordTextField.getText());
+
+        // Set the first name of the User object to the value entered in the firstNameTextField
         user.setFirstName(firstNameTextField.getText());
+
+        // Set the last name of the User object to the value entered in the lastNameTextField
         user.setFirstName(lastNameTextField.getText());
 
-        // use dao to save user to db and show alert message
+        // Try to update the user in the database using the userDAO
         try {
             userDAO.update(user);
+            // Show a success alert message
             FxUtils.alert("User updated successfully!");
         } catch (SQLException e) {
-            // Show error alert
+            // Show an error alert message
             FxUtils.alert("User updated failed!");
         }
     }
 
-    private void handleGoBackAction() {
-//        Stage stage = (Stage) loginButton.getScene().getWindow();
-//        stage.close();
-    }
 
 
 }
