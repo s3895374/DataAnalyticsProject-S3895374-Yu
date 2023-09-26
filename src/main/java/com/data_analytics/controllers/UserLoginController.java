@@ -44,7 +44,7 @@ public class UserLoginController {
         try {
             user = userDAO.findByUsername(username);
             if (user != null && user.getPassword().equals(password)) {
-               UserDashboardController controller =  FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
+               DashboardController controller =  FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
                controller.setLogInUser(user);
 //                handleGoBackAction();
             } else {

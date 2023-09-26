@@ -7,15 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class UserDashboardController {
+public class DashboardController {
 
     public BorderPane contentPane;
     @FXML
@@ -33,11 +30,6 @@ public class UserDashboardController {
         welcomeMessageLabel.setText("Welcome, " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName() + "!");
     }
 
-    @FXML
-    public void handleUserProfile() {
-        FxUtils.showFxmlDialog("views/user_profile.fxml", "User Profile", 350, 450);
-    }
-
     public void onMyProfileClick(ActionEvent actionEvent) {
         String fxmlPath = "views/user_profile.fxml";
         try {
@@ -50,6 +42,27 @@ public class UserDashboardController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onAddPostClick(ActionEvent actionEvent) {
+        String fxmlPath = "views/add_post.fxml";
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
+            Node root = fxmlLoader.load();
+            contentPane.getChildren().clear();
+            contentPane.setCenter(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onViewPostClick(ActionEvent actionEvent) {
+    }
+
+    public void onDeletePostClick(ActionEvent actionEvent) {
+    }
+
+    public void onTopNLikesPostClick(ActionEvent actionEvent) {
 
     }
 }

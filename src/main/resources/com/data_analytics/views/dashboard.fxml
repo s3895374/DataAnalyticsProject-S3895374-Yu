@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.data_analytics.controllers.UserDashboardController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.data_analytics.controllers.DashboardController">
 
     <top>
         <ToolBar>
             <Button onAction="#onMyProfileClick" text="My Profile" />
-            <Button text="Add Post" />
-            <Button text="View Post" />
-            <Button text="Delete Post" />
-            <Button text="Top Posts" />
+            <Button onAction="#onAddPostClick" text="Add Post" />
+            <Button onAction="#onViewPostClick" text="View Post" />
+            <Button onAction="#onDeletePostClick" text="Delete Post" />
+            <Button onAction="#onTopNLikesPostClick" text="Top n likes Posts" />
             <Separator />
             <Button text="Export Data" />
             <Separator />
