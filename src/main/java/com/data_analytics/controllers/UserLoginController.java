@@ -27,6 +27,13 @@ public class UserLoginController {
     private Button registerButton;
 
     @FXML
+    public void initialize() {
+        usernameField.setText("abc");
+        passwordField.setText("123");
+    }
+
+
+    @FXML
     private void handleLoginAction() {
         // Get values from fields
         String username = usernameField.getText();
@@ -37,7 +44,9 @@ public class UserLoginController {
         try {
             user = userDAO.findByUsername(username);
             if (user != null && user.getPassword().equals(password)) {
-                handleGoBackAction();
+               UserDashboardController controller =  FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
+               controller.setLogInUser(user);
+//                handleGoBackAction();
             } else {
                 FxUtils.alert("Invalid username or password");
             }

@@ -7,14 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 public class SQLUtils {
-    private static Connection conn;
 
     public static Connection createConnection() throws SQLException {
-        if (conn == null) {
-            // Establish connection
-            conn = DriverManager.getConnection("jdbc:sqlite:sample.db");
-        }
-        return conn;
+        // Establish connection
+        return DriverManager.getConnection("jdbc:sqlite:db.sqlite");
     }
 
     public static void executeUpdate(String sql, Object... params) throws SQLException {
@@ -48,8 +44,12 @@ public class SQLUtils {
         Connection conn = createConnection();
 
         PreparedStatement stmt = conn.prepareStatement(sql);
-
         // set parameters
+        int index = 1;
+        for (Object param : params) {
+            stmt.setObject(index, param);
+            index++;
+        }
 
         ResultSet rs = stmt.executeQuery();
 
@@ -73,10 +73,17 @@ public class SQLUtils {
         return resultMap;
 
     }
+
     public static List<Map<String, Object>> executeQuery(String sql, Object... params) throws SQLException {
         Connection conn = createConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
         // set parameters
+        int index = 1;
+        for (Object param : params) {
+            stmt.setObject(index, param);
+            index++;
+        }
+
         ResultSet rs = stmt.executeQuery();
         List<Map<String, Object>> resultList = new ArrayList<>();
         while (rs.next()) {

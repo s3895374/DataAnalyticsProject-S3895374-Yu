@@ -11,20 +11,12 @@ public class Post {
     private int shares;
     private Date datetime;
 
-    // Constructor, getters and setters
+    private String createBy;
 
 
     public Post() {
     }
 
-    public Post(int id, String content, String author, int likes, int shares, Date datetime) {
-        this.id = id;
-        this.content = content;
-        this.author = author;
-        this.likes = likes;
-        this.shares = shares;
-        this.datetime = datetime;
-    }
 
     public int getId() {
         return id;
@@ -72,5 +64,13 @@ public class Post {
 
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 }

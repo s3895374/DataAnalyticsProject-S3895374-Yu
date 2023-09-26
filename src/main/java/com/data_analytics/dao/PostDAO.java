@@ -12,10 +12,10 @@ import java.util.Map;
 public class PostDAO {
 
     public void save(Post post) throws SQLException {
-        String sql = "INSERT INTO posts (id, content, author, likes, shares, datetime) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO posts (id, content, author, likes, shares, datetime, createBy) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         SQLUtils.executeUpdate(sql, post.getId(), post.getContent(), post.getAuthor(),
-                post.getLikes(), post.getShares(), post.getDatetime());
+                post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy());
     }
 
     public Post findById(int id) throws SQLException {
@@ -41,11 +41,11 @@ public class PostDAO {
     }
 
     public void update(Post post) throws SQLException {
-        String sql = "UPDATE posts SET content = ?, author = ?, likes = ?, shares = ?, datetime = ? " +
+        String sql = "UPDATE posts SET content = ?, author = ?, likes = ?, shares = ?, datetime = ?, createBy = ?" +
                 "WHERE id = ?";
 
         SQLUtils.executeUpdate(sql, post.getContent(), post.getAuthor(), post.getLikes(),
-                post.getShares(), post.getDatetime(), post.getId());
+                post.getShares(), post.getDatetime(), post.getCreateBy(), post.getId());
     }
 
     public void deleteById(int id) throws SQLException {
@@ -64,6 +64,7 @@ public class PostDAO {
         post.setLikes((Integer) map.get("likes"));
         post.setShares((Integer) map.get("shares"));
         post.setDatetime((Date) map.get("datetime"));
+        post.setCreateBy((String) map.get("createBy"));
 
         return post;
     }

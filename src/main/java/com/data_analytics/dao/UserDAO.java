@@ -22,7 +22,9 @@ public class UserDAO {
         String sql = "SELECT * FROM users WHERE username = ?";
 
         Map<String, Object> result = SQLUtils.executeQuerySingle(sql, username);
-
+        if (result.size() == 0) {
+            return null;
+        }
         return mapToUser(result);
     }
 
@@ -56,11 +58,12 @@ public class UserDAO {
     private User mapToUser(Map<String, Object> map) {
         User user = new User();
 
-        user.setUsername((String)map.get("username"));
-        user.setPassword((String)map.get("password"));
-        user.setFirstName((String)map.get("first_name"));
-        user.setLastName((String)map.get("last_name"));
-        user.setVIP((Boolean)map.get("is_vip"));
+        user.setUsername((String) map.get("username"));
+        user.setPassword((String) map.get("password"));
+        user.setFirstName((String) map.get("first_name"));
+        user.setLastName((String) map.get("last_name"));
+        int v = (int) map.get("is_vip");
+        user.setVIP(v == 1);
 
         return user;
 

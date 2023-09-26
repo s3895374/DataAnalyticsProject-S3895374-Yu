@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.UserDashboardController"
-      spacing="20" alignment="center">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.data_analytics.controllers.UserDashboardController">
 
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
-    </padding>
+    <top>
+        <ToolBar>
+            <Button onAction="#onMyProfileClick" text="My Profile" />
+            <Button text="Add Post" />
+            <Button text="View Post" />
+            <Button text="Delete Post" />
+            <Button text="Top Posts" />
+            <Separator />
+            <Button text="Export Data" />
+            <Separator />
+            <Button text="Logout" />
+        </ToolBar>
+    </top>
 
-    <Label fx:id="welcomeMessageLabel"/>
+    <center>
+        <BorderPane fx:id="contentPane">
+            <center>
+                <Label fx:id="welcomeMessageLabel" />
+            </center>
+        </BorderPane>
+    </center>
 
-    <!-- other dashboard content -->
 
-</VBox>
+</BorderPane>

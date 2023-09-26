@@ -38,9 +38,11 @@ public class FxUtils {
             stage.show();
             return controller;
         } catch (IOException e) {
+            e.printStackTrace();
             return null;
         }
 
     }
+
 
 }
