@@ -10,7 +10,6 @@ public class Post {
     private int likes;
     private int shares;
     private Date datetime;
-
     private String createBy;
 
 

@@ -13,9 +13,9 @@
             <Button onAction="#onDeletePostClick" text="Delete Post" />
             <Button onAction="#onTopNLikesPostClick" text="Top n likes Posts" />
             <Separator />
-            <Button text="Export Data" />
+            <Button onAction="#onExportClick" text="Export Data" />
             <Separator />
-            <Button text="Logout" />
+            <Button onAction="#onLogoutClick" text="Logout" />
         </ToolBar>
     </top>
 

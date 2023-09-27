@@ -59,28 +59,23 @@ public class SQLUtils {
     public static long executeInsert(String sql, Object... params) throws SQLException {
         // Create a connection to the database
         Connection conn = createConnection();
-
+        conn.setAutoCommit(false);
         // Prepare a statement with the given SQL query and return generated keys
         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-        // Execute the update query
+        // Set parameters for the SQL statement
+        for (int i = 0; i < params.length; i++) {
+            stmt.setObject(i + 1, params[i]);
+        }
         stmt.executeUpdate();
 
-        // Get the generated keys from the executed statement
-        ResultSet rs = stmt.getGeneratedKeys();
-
-        // Initialize a variable to store the generated key
+        // Execute the update query
         long generatedKey = 0;
-
-        // Check if there is a next row in the result set
-        if (rs.next()) {
-            // Get the generated key from the first column of the result set
-            generatedKey = rs.getLong(1);
+        Statement statement = conn.createStatement();
+        ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()");
+        if (generatedKeys.next()) {
+            generatedKey = generatedKeys.getLong(1);
         }
-
-        // Close the result set and the statement
-        rs.close();
-        stmt.close();
+        conn.commit();
 
         // Return the generated key
         return generatedKey;

@@ -31,6 +31,12 @@ public class ProfileController {
 
     // Load user data
     public void loadUser(User user) {
+        try {
+            user = userDAO.findByUsername(user.getUsername());
+        } catch (SQLException e) {
+
+        }
+
         // Set the text of the usernameTextField to the username of the user
         usernameTextField.setText(user.getUsername());
 
@@ -51,13 +57,15 @@ public class ProfileController {
 
         // Set the username of the User object to the value entered in the usernameTextField
         user.setUsername(usernameTextField.getText());
-        user.setUsername(passwordTextField.getText());
+
+        // Set the password of the User object to the value entered in the passwordTextField
+        user.setPassword(passwordTextField.getText());
 
         // Set the first name of the User object to the value entered in the firstNameTextField
         user.setFirstName(firstNameTextField.getText());
 
         // Set the last name of the User object to the value entered in the lastNameTextField
-        user.setFirstName(lastNameTextField.getText());
+        user.setLastName(lastNameTextField.getText());
 
         // Try to update the user in the database using the userDAO
         try {

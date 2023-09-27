@@ -52,7 +52,7 @@
             </padding>
         </Label>
 
-        <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true">
         </TextField>
 
         <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -65,11 +65,8 @@
         </TextField>
 
         <FlowPane GridPane.columnIndex="1" GridPane.rowIndex="5" hgap="10">
-            <Button>
+            <Button onAction="#handleSaveUserAction">
                 Save
-            </Button>
-            <Button>
-                Reset
             </Button>
         </FlowPane>
     </children>

@@ -50,6 +50,7 @@ public class UserLoginController {
                 DashboardController controller = FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
                 // Pass logged in user to dashboard controller
                 controller.setLogInUser(user);
+                handleGoBackAction();
             } else {
                 // Show alert for invalid username or password
                 FxUtils.alert("Invalid username or password");

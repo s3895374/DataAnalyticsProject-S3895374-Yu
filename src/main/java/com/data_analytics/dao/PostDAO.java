@@ -22,11 +22,11 @@ public class PostDAO {
      */
     public void save(Post post) throws SQLException {
         // Define the SQL query for inserting data into the "posts" table
-        String sql = "INSERT INTO posts (id, content, author, likes, shares, datetime, createBy) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO posts ( content, author, likes, shares, datetime, createBy) VALUES (?, ?, ?, ?, ?, ?)";
 
         // Execute the SQL query with the provided parameters
-        SQLUtils.executeUpdate(sql, post.getId(), post.getContent(), post.getAuthor(),
-                post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy());
+        long id = SQLUtils.executeInsert(sql, post.getContent(), post.getAuthor(), post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy());
+        post.setId((int) id);
     }
 
     /**
@@ -44,6 +44,9 @@ public class PostDAO {
         Map<String, Object> result = SQLUtils.executeQuerySingle(sql, id);
 
         // Convert the result map into a Post object
+        if (result.size() == 0) {
+            return null;
+        }
         return mapToPost(result);
     }
 
@@ -80,12 +83,10 @@ public class PostDAO {
      */
     public void update(Post post) throws SQLException {
         // SQL update statement to update the 'posts' table
-        String sql = "UPDATE posts SET content = ?, author = ?, likes = ?, shares = ?, datetime = ?, createBy = ?" +
-                        "WHERE id = ?";
+        String sql = "UPDATE posts SET content = ?, author = ?, likes = ?, shares = ?, datetime = ?, createBy = ?" + "WHERE id = ?";
 
         // Execute the SQL update statement with the given parameters
-        SQLUtils.executeUpdate(sql, post.getContent(), post.getAuthor(), post.getLikes(),
-                post.getShares(), post.getDatetime(), post.getCreateBy(), post.getId());
+        SQLUtils.executeUpdate(sql, post.getContent(), post.getAuthor(), post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy(), post.getId());
     }
 
     /**
@@ -116,7 +117,7 @@ public class PostDAO {
         post.setAuthor((String) map.get("author"));
         post.setLikes((Integer) map.get("likes"));
         post.setShares((Integer) map.get("shares"));
-        post.setDatetime((Date) map.get("datetime"));
+        post.setDatetime(new Date((Long) map.get("datetime")));
         post.setCreateBy((String) map.get("createBy"));
 
         return post;
