@@ -1,6 +1,6 @@
 package com.data_analytics.utils;
 
-import com.data_analytics.HelloApplication;
+import com.data_analytics.MyApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -51,7 +51,7 @@ public class FxUtils {
     public static <T> T showFxmlDialog(String fxmlPath, String title, int width, int height) {
         try {
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlPath));
+            FXMLLoader fxmlLoader = new FXMLLoader(MyApplication.class.getResource(fxmlPath));
             Scene scene = new Scene(fxmlLoader.load(), width, height);
             T controller = fxmlLoader.getController();
             stage.setTitle(title);

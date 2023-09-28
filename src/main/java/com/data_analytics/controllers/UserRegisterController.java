@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ * Controller class for the user registration view.
+ */
 public class UserRegisterController {
     private UserDAO userDAO = new UserDAO();
 
@@ -35,10 +38,18 @@ public class UserRegisterController {
     @FXML
     private Button goBackButton;
 
+    /**
+     * Initializes the controller.
+     */
     @FXML
     public void initialize() {
     }
 
+    /**
+     * Validates the input fields.
+     *
+     * @return true if all required fields are filled, false otherwise.
+     */
     @FXML
     private boolean validateInput() {
         // Validate required fields 
@@ -75,6 +86,9 @@ public class UserRegisterController {
         return true;
     }
 
+    /**
+     * Handles the sign up action.
+     */
     @FXML
     private void handleSignupAction() {
 
@@ -109,6 +123,9 @@ public class UserRegisterController {
 
     }
 
+    /**
+     * Handles the go back action.
+     */
     @FXML
     private void handleGoBackAction() {
         Stage stage = (Stage) signupButton.getScene().getWindow();

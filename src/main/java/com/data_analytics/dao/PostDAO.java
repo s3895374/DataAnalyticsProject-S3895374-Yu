@@ -22,10 +22,10 @@ public class PostDAO {
      */
     public void save(Post post) throws SQLException {
         // Define the SQL query for inserting data into the "posts" table
-        String sql = "INSERT INTO posts ( content, author, likes, shares, datetime, createBy) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO posts (id, content, author, likes, shares, datetime, createBy) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Execute the SQL query with the provided parameters
-        long id = SQLUtils.executeInsert(sql, post.getContent(), post.getAuthor(), post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy());
+        long id = SQLUtils.executeInsert(sql, post.getId(), post.getContent(), post.getAuthor(), post.getLikes(), post.getShares(), post.getDatetime(), post.getCreateBy());
         post.setId((int) id);
     }
 

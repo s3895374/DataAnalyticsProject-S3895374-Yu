@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ * The UserLoginController class is responsible for controlling the user login functionality.
+ */
 public class UserLoginController {
     private UserDAO userDAO = new UserDAO();
     @FXML
@@ -26,13 +29,18 @@ public class UserLoginController {
     @FXML
     private Button registerButton;
 
+    /**
+     * Initializes the UserLoginController.
+     */
     @FXML
     public void initialize() {
         usernameField.setText("abc");
         passwordField.setText("123");
     }
 
-
+    /**
+     * Handles the login action when the login button is clicked.
+     */
     @FXML
     private void handleLoginAction() {
         // Get values from fields
@@ -47,7 +55,7 @@ public class UserLoginController {
             // Check if user exists and password is correct
             if (user != null && user.getPassword().equals(password)) {
                 // Show dashboard view
-                DashboardController controller = FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 800, 600);
+                DashboardController controller = FxUtils.showFxmlDialog("views/dashboard.fxml", "Dashboard", 900, 600);
                 // Pass logged in user to dashboard controller
                 controller.setLogInUser(user);
                 handleGoBackAction();
@@ -62,11 +70,17 @@ public class UserLoginController {
 
     }
 
+    /**
+     * Handles the register action when the register button is clicked.
+     */
     @FXML
     private void handleRegisterAction() {
         FxUtils.showFxmlDialog("views/user_register.fxml", "Register", 350, 450);
     }
 
+    /**
+     * Handles the go back action when the go back button is clicked.
+     */
     @FXML
     private void handleGoBackAction() {
         Stage stage = (Stage) loginButton.getScene().getWindow();

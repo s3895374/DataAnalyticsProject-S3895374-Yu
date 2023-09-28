@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ * Controller class for the profile view.
+ */
 public class ProfileController {
     private UserDAO userDAO = new UserDAO();
 
@@ -25,11 +28,18 @@ public class ProfileController {
     @FXML
     private TextField lastNameTextField;
 
+    /**
+     * Initializes the controller.
+     */
     @FXML
     public void initialize() {
     }
 
-    // Load user data
+    /**
+     * Loads user data into the view.
+     *
+     * @param user The user object to load data from.
+     */
     public void loadUser(User user) {
         try {
             user = userDAO.findByUsername(user.getUsername());
@@ -50,7 +60,9 @@ public class ProfileController {
         lastNameTextField.setText(user.getLastName());
     }
 
-    // Save user data
+    /**
+     * Handles the save user action.
+     */
     public void handleSaveUserAction() {
         // Create a new User object
         User user = new User();
@@ -77,7 +89,4 @@ public class ProfileController {
             FxUtils.alert("User updated failed!");
         }
     }
-
-
-
 }

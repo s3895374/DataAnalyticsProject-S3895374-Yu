@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Controller class for the TopPosts view.
+ */
 public class TopPostsController {
 
     @FXML
@@ -21,6 +24,10 @@ public class TopPostsController {
 
     private PostDAO postDAO = new PostDAO();
 
+    /**
+     * Event handler for the search button.
+     * Retrieves the top posts from the database and displays them in the ListView.
+     */
     @FXML
     public void handleSearch() {
         int numPosts = numPostsSpinner.getValue();

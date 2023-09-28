@@ -6,12 +6,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-public class HelloApplication extends Application {
+public class MyApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/user_login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MyApplication.class.getResource("views/user_login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 420, 240);
         stage.setTitle("Login!");
         stage.setScene(scene);

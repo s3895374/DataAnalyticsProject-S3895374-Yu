@@ -24,25 +24,29 @@
         <RowConstraints/>
     </rowConstraints>
     <children>
-        <Label text="Content:"/>
-        <TextArea fx:id="contentField" promptText="Enter post content" GridPane.rowIndex="1"/>
+        <Label text="Id:" GridPane.rowIndex="0"/>
+        <TextField fx:id="idField" promptText="Enter an id(eg. 2223)" GridPane.rowIndex="1"/>
 
-        <Label text="Author:" GridPane.rowIndex="2"/>
-        <TextField fx:id="authorField" promptText="Enter author name" GridPane.rowIndex="3"/>
 
-        <Label text="Likes:" GridPane.rowIndex="4"/>
+        <Label text="Content:" GridPane.rowIndex="2"/>
+        <TextArea fx:id="contentField" promptText="Enter post content" GridPane.rowIndex="3"/>
 
-        <Spinner fx:id="likesField" GridPane.rowIndex="5" min="0" max="1000000"/>
+        <Label text="Author:" GridPane.rowIndex="4"/>
+        <TextField fx:id="authorField" promptText="Enter author name" GridPane.rowIndex="5"/>
 
-        <Label text="Shares:" GridPane.rowIndex="6"/>
+        <Label text="Likes:" GridPane.rowIndex="6"/>
 
-        <Spinner fx:id="sharesField" GridPane.rowIndex="7" min="0" max="1000000"/>
+        <TextField fx:id="likesField" GridPane.rowIndex="7" />
 
-        <Label text="Datetime:" GridPane.rowIndex="8"/>
+        <Label text="Shares:" GridPane.rowIndex="8"/>
 
-        <DatePicker fx:id="dateTimePicker" GridPane.rowIndex="9"/>
+        <TextField fx:id="sharesField" GridPane.rowIndex="9" />
 
-        <FlowPane GridPane.columnIndex="0" GridPane.rowIndex="10" hgap="10">
+        <Label text="Datetime:" GridPane.rowIndex="10"/>
+
+        <DatePicker fx:id="dateTimePicker" GridPane.rowIndex="11"/>
+
+        <FlowPane GridPane.columnIndex="0" GridPane.rowIndex="12" hgap="10">
             <Button fx:id="submitButton" onAction="#handleSubmit" text="Submit"/>
             <Button fx:id="resetButton" onAction="#handleReset" text="Reset"/>
         </FlowPane>

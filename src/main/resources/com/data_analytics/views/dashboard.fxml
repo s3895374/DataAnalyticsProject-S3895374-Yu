@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.data_analytics.controllers.DashboardController">
+<BorderPane prefHeight="500" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.data_analytics.controllers.DashboardController">
 
     <top>
         <ToolBar>
@@ -12,6 +12,9 @@
             <Button onAction="#onViewPostClick" text="View Post" />
             <Button onAction="#onDeletePostClick" text="Delete Post" />
             <Button onAction="#onTopNLikesPostClick" text="Top n likes Posts" />
+            <Separator fx:id="vipSep"/>
+            <Button fx:id="vipShare" onAction="#onStatsClick" text="View Share Stats" />
+            <Button fx:id="vipStat" onAction="#onImportClick" text="Import Data" />
             <Separator />
             <Button onAction="#onExportClick" text="Export Data" />
             <Separator />
@@ -22,7 +25,13 @@
     <center>
         <BorderPane fx:id="contentPane">
             <center>
-                <Label fx:id="welcomeMessageLabel" />
+                <VBox alignment="CENTER" fillWidth="false">
+                    <HBox BorderPane.alignment="CENTER">
+                        <Label fx:id="welcomeMessageLabel" />
+                        <Button fx:id="vipButton" onAction="#onBecameVIPClick">Became VIP</Button>
+                    </HBox>
+                </VBox>
+
             </center>
         </BorderPane>
     </center>

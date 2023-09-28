@@ -8,6 +8,9 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
+/**
+ * Controller class for the ViewPost.fxml file.
+ */
 public class ViewPostController {
 
     @FXML
@@ -18,6 +21,9 @@ public class ViewPostController {
 
     private PostDAO postDAO = new PostDAO();
 
+    /**
+     * Event handler for the lookup button.
+     */
     @FXML
     public void handleLookup() {
         int postId = Integer.parseInt(postIdField.getText());

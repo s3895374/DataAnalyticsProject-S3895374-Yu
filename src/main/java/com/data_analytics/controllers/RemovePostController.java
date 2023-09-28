@@ -8,6 +8,9 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
+/**
+ * The RemovePostController class is responsible for handling the removal of a post.
+ */
 public class RemovePostController {
 
     @FXML
@@ -18,6 +21,9 @@ public class RemovePostController {
 
     private PostDAO postDAO = new PostDAO();
 
+    /**
+     * Handles the removal of a post.
+     */
     @FXML
     public void handleRemove() {
         int postId = Integer.parseInt(postIdField.getText());

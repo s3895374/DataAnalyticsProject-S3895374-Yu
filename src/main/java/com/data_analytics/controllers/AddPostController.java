@@ -15,7 +15,12 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
 
+/**
+ * Controller class for adding a new post.
+ */
 public class AddPostController {
+    @FXML
+    private TextField idField;
     @FXML
     private TextArea contentField;
 
@@ -23,29 +28,41 @@ public class AddPostController {
     private TextField authorField;
 
     @FXML
-    private Spinner<Integer> likesField;
+    private TextField likesField;
 
     @FXML
-    private Spinner<Integer> sharesField;
+    private TextField sharesField;
 
     @FXML
     private DatePicker dateTimePicker;
 
     private User currentUser;
 
+    /**
+     * Handles the submit button action.
+     */
     @FXML
     public void handleSubmit() {
 
         // Get values from UI
+        String idStr = idField.getText();
+        int id = 0;
+        try{
+            id = Integer.parseInt(idStr);
+        }catch (Exception e) {
+            FxUtils.alert("Please input an integer for post id");
+            return;
+        }
         String content = contentField.getText();
         String author = authorField.getText();
-        int likes = likesField.getValue();
-        int shares = sharesField.getValue();
+        int likes = Integer.parseInt(likesField.getText());
+        int shares = Integer.parseInt(sharesField.getText());
         Instant instant = dateTimePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant();
         Date datetime = Date.from(instant);
 
         // Create Post
         Post post = new Post();
+        post.setId(id);
         post.setContent(content);
         post.setAuthor(author);
         post.setLikes(likes);
@@ -59,21 +76,28 @@ public class AddPostController {
             postDAO.save(post);
             FxUtils.alert("Post added successfully! The post id is " + post.getId() + "!");
         } catch (SQLException e) {
-            FxUtils.alert("Post added failed!");
+            FxUtils.alert("Post added failed! The post id already exists!");
         }
     }
 
+    /**
+     * Handles the reset button action.
+     */
     @FXML
     public void handleReset() {
         // Clear UI field values
         contentField.clear();
         authorField.clear();
-        likesField.getValueFactory().setValue(0);
-        sharesField.getValueFactory().setValue(0);
+        likesField.clear();
+        sharesField.clear();
         dateTimePicker.setValue(null);
-
     }
 
+    /**
+     * Sets the current user.
+     *
+     * @param currentUser The current user.
+     */
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
